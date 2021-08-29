@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.proj.mapper.BoardMapper">
+
+ 	<insert id="addBoard" parameterType="BoardVo">
+        INSERT INTO test (
+            key,
+            val1
+        ) VALUES (
+            #{name},
+            #{count}
+        )
+    </insert>
+
+<!--     <select id="findList" resultType="student">
+        SELECT 
+            id,
+            name,
+            code,
+            save_date as 'saveDate'
+        FROM student
+    </select>
+    
+    <select id="findOneByCode" parameterType="String" resultType="student">
+        SELECT
+            id,
+            name,
+            code,
+            save_date as 'saveDate'
+        FROM student
+        WHERE code = #{code}
+    </select>    
+    
+    <insert id="save" parameterType="student">
+        INSERT INTO student (
+            name,
+            code,
+            save_date
+        ) VALUES (
+            #{name},
+            #{code},
+            #{saveDate}
+        )
+    </insert>
+    
+    <update id="update" parameterType="student">
+        UPDATE student
+        SET 
+            name = #{name},
+            code = #{code},
+            save_date = #{saveDate}
+        WHERE id = #{id}
+    </update>
+    
+    <delete id = "deleteById" parameterType="int">
+        DELETE FROM student WHERE id = #{id}
+    </delete> -->
+</mapper>
