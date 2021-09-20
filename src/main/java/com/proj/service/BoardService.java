@@ -1,5 +1,7 @@
 package com.proj.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class BoardService {
 		int res = boardMapper.addBoard(board);
 		System.out.println("boardService:"+res);
 		return res;
+	}
+	
+	public List<BoardVo> getBoardList(){
+		List<BoardVo> boardList = boardMapper.getBoardList();
+		return boardList;
 	}
 }

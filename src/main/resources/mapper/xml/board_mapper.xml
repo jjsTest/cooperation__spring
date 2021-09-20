@@ -7,14 +7,25 @@
 <mapper namespace="com.proj.mapper.BoardMapper">
 
  	<insert id="addBoard" parameterType="BoardVo">
-        INSERT INTO test (
-            key,
-            val1
+        INSERT INTO board (
+        	id,
+            name,
+            total_num
         ) VALUES (
+        	nextval('board_id'),
             #{name},
-            #{count}
+            #{total_num}
         )
     </insert>
+    
+    <select id="getBoardList" resultType="BoardVo">
+    	select
+    		id,
+    		name,
+    	<!-- 	num, -->
+    		total_num
+    	from board
+    </select>
 
 <!--     <select id="findList" resultType="student">
         SELECT 

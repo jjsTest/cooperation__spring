@@ -1,5 +1,7 @@
 package com.proj.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.proj.vo.BoardVo;
@@ -9,6 +11,7 @@ public interface BoardMapper {
 	
 	public int addBoard(BoardVo board);
 	
+	public List<BoardVo> getBoardList();
 	/*
 	 * public List<BoardMapper> findList();
 	 * 
