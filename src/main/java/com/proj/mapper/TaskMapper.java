@@ -4,20 +4,19 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.proj.vo.BoardVo;
+import com.proj.vo.TaskVo;
 
 @Mapper
-public interface BoardMapper {
+public interface TaskMapper {
 	
-	public int addBoard(BoardVo board);
+	public int addTask(TaskVo task);
 	
-	public List<BoardVo> getBoardList();
+	public List<TaskVo> getTaskList(TaskVo task);
 	
-	public List<BoardVo> getBoardDetail(BoardVo board);
+	public List<TaskVo> getDetail(TaskVo task);
 	
-	public int editBoard(BoardVo board);
+	public int addComment(TaskVo task);
 	
-	public int deleteBoard(BoardVo board);
 	/*
 	 * public List<BoardMapper> findList();
 	 * 

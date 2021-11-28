@@ -6,6 +6,14 @@
 
 <mapper namespace="com.proj.mapper.BoardMapper">
 
+ 	<resultMap type="BoardVo" id="getBoardlSelect">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="num" column="num"/>
+		<result property="total_num" column="total_num"/>
+		<result property="create_id" column="create_id"/>
+	</resultMap> 
+
  	<insert id="addBoard" parameterType="BoardVo">
         INSERT INTO board (
         	id,
@@ -18,56 +26,38 @@
         )
     </insert>
     
-    <select id="getBoardList" resultType="BoardVo">
+    <select id="getBoardList" resultType="BoardVo" resultMap="getBoardlSelect">
     	select
     		id,
     		name,
-    	<!-- 	num, -->
-    		total_num
+    		num,
+    		total_num,
+    		create_id
     	from board
     </select>
 
-<!--     <select id="findList" resultType="student">
-        SELECT 
-            id,
-            name,
-            code,
-            save_date as 'saveDate'
-        FROM student
+	<select id="getBoardDetail" resultType="BoardVo" resultMap="getBoardlSelect" parameterType="BoardVo">
+    	select
+    		id,
+    		name,
+    		num,
+    		total_num,
+    		create_id
+    	from board
+    	where id = #{id}
     </select>
-    
-    <select id="findOneByCode" parameterType="String" resultType="student">
-        SELECT
-            id,
-            name,
-            code,
-            save_date as 'saveDate'
-        FROM student
-        WHERE code = #{code}
-    </select>    
-    
-    <insert id="save" parameterType="student">
-        INSERT INTO student (
-            name,
-            code,
-            save_date
-        ) VALUES (
-            #{name},
-            #{code},
-            #{saveDate}
-        )
-    </insert>
-    
-    <update id="update" parameterType="student">
-        UPDATE student
+
+    <update id="editBoard" parameterType="BoardVo">
+        UPDATE board
         SET 
             name = #{name},
-            code = #{code},
-            save_date = #{saveDate}
+            total_num = #{total_num},
+            update_date = now()
         WHERE id = #{id}
     </update>
     
-    <delete id = "deleteById" parameterType="int">
-        DELETE FROM student WHERE id = #{id}
-    </delete> -->
+    <delete id = "deleteBoard" parameterType="BoardVo">
+        DELETE FROM board WHERE id = #{id}
+    </delete>
+
 </mapper>

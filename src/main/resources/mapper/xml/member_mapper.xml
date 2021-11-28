@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.proj.mapper.MemberMapper">
+
+
+ 	<insert id="saveSignUp" parameterType="MemberVo">
+        INSERT INTO member (
+        	id,
+            password,
+            email,
+            create_date
+        ) VALUES (
+            #{id},
+            #{pw},
+            #{email},
+            now()
+        )
+    </insert>
+    
+   <select id="login" parameterType="String" resultType="JwtRequest">
+    	select
+    		id as username,
+    		password
+    	from member
+    	where id=#{username};
+    </select>
+    <!-- 
+    <select id="getDetail" parameterType="TaskVo" resultType="TaskVo" resultMap="taskDetailSelect">
+    	select
+    		a.id task_id,
+    		a.subject task_subject,
+    		a.contents task_contents,
+    		b.id comment_id,
+    		b.contents comment_contents
+    	from task a left join task_comment b 
+    	 on  a.board_id=b.board_id
+    	 and a.id = b.task_id
+    	where a.board_id=#{board_id}
+    	  and a.id=#{task_id};
+    </select>
+
+	<insert id="addComment" parameterType="TaskVo">
+        INSERT INTO task_comment (
+        	id,
+            task_id,
+            board_id,
+            member_id,
+            member_name,
+            contents
+        )
+        VALUES (
+        	(SELECT COALESCE(MAX(ID),0)+1 
+        	   FROM task_comment
+        	  WHERE BOARD_ID = #{board_id} 
+        		AND TASK_ID = #{task_id} ),
+        	#{task_id},	   
+            #{board_id},
+            'admin',
+            '관리자',
+            #{contents}
+        )
+    </insert> -->
+<!--     <select id="findList" resultType="student">
+        SELECT 
+            id,
+            name,
+            code,
+            save_date as 'saveDate'
+        FROM student
+    </select>
+    
+    <select id="findOneByCode" parameterType="String" resultType="student">
+        SELECT
+            id,
+            name,
+            code,
+            save_date as 'saveDate'
+        FROM student
+        WHERE code = #{code}
+    </select>    
+    
+    <insert id="save" parameterType="student">
+        INSERT INTO student (
+            name,
+            code,
+            save_date
+        ) VALUES (
+            #{name},
+            #{code},
+            #{saveDate}
+        )
+    </insert>
+    
+    <update id="update" parameterType="student">
+        UPDATE student
+        SET 
+            name = #{name},
+            code = #{code},
+            save_date = #{saveDate}
+        WHERE id = #{id}
+    </update>
+    
+    <delete id = "deleteById" parameterType="int">
+        DELETE FROM student WHERE id = #{id}
+    </delete> -->
+</mapper>

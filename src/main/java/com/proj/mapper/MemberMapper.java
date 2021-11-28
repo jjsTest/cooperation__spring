@@ -1,23 +1,21 @@
 package com.proj.mapper;
 
-import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 
-import com.proj.vo.BoardVo;
+import com.proj.vo.JwtRequest;
+import com.proj.vo.MemberVo;
 
 @Mapper
-public interface BoardMapper {
+public interface MemberMapper {
 	
-	public int addBoard(BoardVo board);
+	public int saveSignUp(MemberVo member);
 	
-	public List<BoardVo> getBoardList();
+	public JwtRequest login(String username);
 	
-	public List<BoardVo> getBoardDetail(BoardVo board);
+	//public List<TaskVo> getDetail(TaskVo task);
 	
-	public int editBoard(BoardVo board);
+	//public int addComment(TaskVo task);
 	
-	public int deleteBoard(BoardVo board);
 	/*
 	 * public List<BoardMapper> findList();
 	 * 
